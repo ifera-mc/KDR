@@ -1,4 +1,4 @@
-![KDR Banner](https://github.com/JackMD/KDR/blob/master/meta/KDR.PNG)
+![KDR Banner](https://github.com/JackMD/KDR/blob/master/meta/KDR.png)
 # KDR
 
 | HitCount | License | Poggit | Release |
