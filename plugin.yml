@@ -1,6 +1,6 @@
 name: KDR
 version: 1.0.0
-api: [3.0.0]
+api: [4.0.0]
 main: JackMD\KDR\KDR
 author: JackMD
 description: KDR, Kill Death Ratio plugin which keeps track of players kill and death count along with kill to death ratio.

@@ -34,7 +34,7 @@ declare(strict_types = 1);
 namespace JackMD\KDR\provider;
 
 use JackMD\KDR\KDR;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\utils\Config;
 
 class YamlProvider implements ProviderInterface{
@@ -49,7 +49,7 @@ class YamlProvider implements ProviderInterface{
 	 * @param Player $player
 	 */
 	public function registerPlayer(Player $player): void{
-		$config = new Config(KDR::getInstance()->getDataFolder() . "data/" . $player->getLowerCaseName() . ".yml", Config::YAML);
+		$config = new Config(KDR::getInstance()->getDataFolder() . "data/" . $player->getDisplayName() . ".yml", Config::YAML);
 		if((!$config->exists("kills")) && (!$config->exists("deaths"))){
 			$config->setAll(["kills" => 0, "deaths" => 0]);
 			$config->save();
@@ -61,7 +61,7 @@ class YamlProvider implements ProviderInterface{
 	 * @param int    $points
 	 */
 	public function addDeathPoints(Player $player, int $points = 1): void{
-		$config = new Config(KDR::getInstance()->getDataFolder() . "data/" . $player->getLowerCaseName() . ".yml", Config::YAML);
+		$config = new Config(KDR::getInstance()->getDataFolder() . "data/" . $player->getDisplayName() . ".yml", Config::YAML);
 		$config->set("deaths", $this->getPlayerDeathPoints($player) + $points);
 		$config->save();
 	}
@@ -71,7 +71,7 @@ class YamlProvider implements ProviderInterface{
 	 * @return int
 	 */
 	public function getPlayerDeathPoints(Player $player): int{
-		$config = new Config(KDR::getInstance()->getDataFolder() . "data/" . $player->getLowerCaseName() . ".yml", Config::YAML);
+		$config = new Config(KDR::getInstance()->getDataFolder() . "data/" . $player->getDisplayName() . ".yml", Config::YAML);
 		return (int) $config->get("deaths");
 	}
 	
@@ -80,7 +80,7 @@ class YamlProvider implements ProviderInterface{
 	 * @param int    $points
 	 */
 	public function addKillPoints(Player $player, int $points = 1): void{
-		$config = new Config(KDR::getInstance()->getDataFolder() . "data/" . $player->getLowerCaseName() . ".yml", Config::YAML);
+		$config = new Config(KDR::getInstance()->getDataFolder() . "data/" . $player->getDisplayName() . ".yml", Config::YAML);
 		$config->set("kills", $this->getPlayerKillPoints($player) + $points);
 		$config->save();
 	}
@@ -90,7 +90,7 @@ class YamlProvider implements ProviderInterface{
 	 * @return bool
 	 */
 	public function playerExists(Player $player): bool{
-		$config = new Config(KDR::getInstance()->getDataFolder() . "data/" . $player->getLowerCaseName() . ".yml", Config::YAML);
+		$config = new Config(KDR::getInstance()->getDataFolder() . "data/" . $player->getDisplayName() . ".yml", Config::YAML);
 		return (($config->exists("kills")) && ($config->exists("deaths"))) ? true : false;
 	}
 	
@@ -115,7 +115,7 @@ class YamlProvider implements ProviderInterface{
 	 * @return int
 	 */
 	public function getPlayerKillPoints(Player $player): int{
-		$config = new Config(KDR::getInstance()->getDataFolder() . "data/" . $player->getLowerCaseName() . ".yml", Config::YAML);
+		$config = new Config(KDR::getInstance()->getDataFolder() . "data/" . $player->getDisplayName() . ".yml", Config::YAML);
 		return (int) $config->get("kills");
 	}
 	
@@ -123,4 +123,3 @@ class YamlProvider implements ProviderInterface{
 		//useless in this case...
 	}
 }
-

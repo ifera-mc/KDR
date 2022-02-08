@@ -62,7 +62,7 @@ class KDR extends PluginBase{
 		$this->setProvider();
 		$this->getProvider()->prepare();
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
-		$this->getLogger()->info("KillCounter Plugin Enabled.");
+		$this->getLogger()->info("KillCounter Plugin Enabled by JackMD.");
 	}
 	
 	/**
